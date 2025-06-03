@@ -5,6 +5,7 @@ import ai.koog.agents.core.agent.context.AIAgentContextBase
 import ai.koog.agents.core.agent.entity.AIAgentNodeBase
 import ai.koog.agents.core.agent.entity.AIAgentStrategy
 import ai.koog.agents.core.tools.Tool
+import ai.koog.agents.core.tools.ToolArgs
 import ai.koog.agents.core.tools.ToolDescriptor
 import ai.koog.agents.core.tools.ToolResult
 import ai.koog.agents.features.common.config.FeatureConfig
@@ -111,26 +112,26 @@ public class EventHandlerConfig : FeatureConfig() {
     /**
      * Handler called when a tool is about to be called.
      */
-    public var onToolCall: suspend (tool: Tool<*, *>, toolArgs: Tool.Args) -> Unit =
-        { tool: Tool<*, *>, toolArgs: Tool.Args -> }
+    public var onToolCall: suspend (tool: Tool<*, *>, toolArgs: ToolArgs) -> Unit =
+        { tool: Tool<*, *>, toolArgs: ToolArgs -> }
 
     /**
      * Handler called when a validation error occurs during a tool call.
      */
-    public var onToolValidationError: suspend (tool: Tool<*, *>, toolArgs: Tool.Args, value: String) -> Unit =
-        { tool: Tool<*, *>, toolArgs: Tool.Args, value: String -> }
+    public var onToolValidationError: suspend (tool: Tool<*, *>, toolArgs: ToolArgs, value: String) -> Unit =
+        { tool: Tool<*, *>, toolArgs: ToolArgs, value: String -> }
 
     /**
      * Handler called when a tool call fails with an exception.
      */
-    public var onToolCallFailure: suspend (tool: Tool<*, *>, toolArgs: Tool.Args, throwable: Throwable) -> Unit =
-        { tool: Tool<*, *>, toolArgs: Tool.Args, throwable: Throwable -> }
+    public var onToolCallFailure: suspend (tool: Tool<*, *>, toolArgs: ToolArgs, throwable: Throwable) -> Unit =
+        { tool: Tool<*, *>, toolArgs: ToolArgs, throwable: Throwable -> }
 
     /**
      * Handler called when a tool call completes successfully.
      */
-    public var onToolCallResult: suspend (tool: Tool<*, *>, toolArgs: Tool.Args, result: ToolResult?) -> Unit =
-        { tool: Tool<*, *>, toolArgs: Tool.Args, result: ToolResult? -> }
+    public var onToolCallResult: suspend (tool: Tool<*, *>, toolArgs: ToolArgs, result: ToolResult?) -> Unit =
+        { tool: Tool<*, *>, toolArgs: ToolArgs, result: ToolResult? -> }
 
     //endregion Trigger Tool Call Handlers
 }

@@ -104,7 +104,7 @@ internal object TestUtils {
         val operation: CalculatorOperation,
         val a: Int,
         val b: Int
-    ) : Tool.Args
+    ) : ToolArgs
 
     public object CalculatorTool : SimpleTool<CalculatorArgs>() {
         override val argsSerializer = CalculatorArgs.serializer()
@@ -152,7 +152,7 @@ internal object TestUtils {
     @Serializable
     data class ColorPickerArgs(
         val color: List<String>
-    ) : Tool.Args
+    ) : ToolArgs
 
     class ColorPickerTool : SimpleTool<ColorPickerArgs>() {
         override val argsSerializer = ColorPickerArgs.serializer()
@@ -181,15 +181,15 @@ internal object TestUtils {
         }
     }
 
-    class SummaryTool : SimpleTool<Tool.EmptyArgs>() {
-        override val argsSerializer = EmptyArgs.serializer()
+    class SummaryTool : SimpleTool<ToolArgs.Empty>() {
+        override val argsSerializer = ToolArgs.Empty.serializer()
 
         override val descriptor = ToolDescriptor(
             name = "summary",
             description = "A tool that summarizes the results of previous operations."
         )
 
-        override suspend fun doExecute(args: EmptyArgs): String {
+        override suspend fun doExecute(args: ToolArgs.Empty): String {
             return "Summary of previous operations"
         }
     }

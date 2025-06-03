@@ -147,7 +147,7 @@ class KotlinAIAgentWithMultipleLLMIntegrationTest {
 
     class CreateFile(private val fs: MockFileSystem) : Tool<CreateFile.Args, CreateFile.Result>() {
         @Serializable
-        data class Args(val path: String, val content: String) : Tool.Args
+        data class Args(val path: String, val content: String) : ToolArgs
 
         @Serializable
         data class Result(
@@ -187,7 +187,7 @@ class KotlinAIAgentWithMultipleLLMIntegrationTest {
 
     class DeleteFile(private val fs: MockFileSystem) : Tool<DeleteFile.Args, DeleteFile.Result>() {
         @Serializable
-        data class Args(val path: String) : Tool.Args
+        data class Args(val path: String) : ToolArgs
 
         @Serializable
         data class Result(
@@ -222,7 +222,7 @@ class KotlinAIAgentWithMultipleLLMIntegrationTest {
 
     class ReadFile(private val fs: MockFileSystem) : Tool<ReadFile.Args, ReadFile.Result>() {
         @Serializable
-        data class Args(val path: String) : Tool.Args
+        data class Args(val path: String) : ToolArgs
 
         @Serializable
         data class Result(
@@ -258,7 +258,7 @@ class KotlinAIAgentWithMultipleLLMIntegrationTest {
 
     class ListFiles(private val fs: MockFileSystem) : Tool<ListFiles.Args, ListFiles.Result>() {
         @Serializable
-        data class Args(val path: String) : Tool.Args
+        data class Args(val path: String) : ToolArgs
 
         @Serializable
         data class Result(
@@ -666,7 +666,7 @@ class KotlinAIAgentWithMultipleLLMIntegrationTest {
 
     object CalculatorTool : Tool<CalculatorTool.Args, ToolResult.Number>() {
         @Serializable
-        data class Args(val operation: CalculatorOperation, val a: Int, val b: Int) : Tool.Args
+        data class Args(val operation: CalculatorOperation, val a: Int, val b: Int) : ToolArgs
 
         override val argsSerializer = Args.serializer()
 

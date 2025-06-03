@@ -7,6 +7,7 @@ import ai.koog.agents.core.dsl.builder.strategy
 import ai.koog.agents.core.dsl.extension.*
 import ai.koog.agents.core.environment.ReceivedToolResult
 import ai.koog.agents.core.tools.Tool
+import ai.koog.agents.core.tools.ToolArgs
 import ai.koog.agents.core.tools.ToolRegistry
 import ai.koog.agents.core.tools.reflect.asTools
 import ai.koog.agents.example.ApiKeyService
@@ -94,7 +95,7 @@ fun main() = runBlocking {
         toolRegistry = toolRegistry
     ) {
         handleEvents {
-            onToolCall = { tool: Tool<*, *>, toolArgs: Tool.Args ->
+            onToolCall = { tool: Tool<*, *>, toolArgs: ToolArgs ->
                 println("Tool called: tool ${tool.name}, args $toolArgs")
             }
 
