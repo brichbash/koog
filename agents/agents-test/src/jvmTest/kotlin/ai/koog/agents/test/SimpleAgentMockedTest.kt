@@ -2,8 +2,8 @@
 
 package ai.koog.agents.test
 
+import ai.koog.agents.core.agent.AIAgent
 import ai.koog.agents.core.tools.ToolRegistry
-import ai.koog.agents.ext.agent.simpleSingleRunAgent
 import ai.koog.agents.ext.tool.ExitTool
 import ai.koog.agents.ext.tool.SayToUser
 import ai.koog.agents.features.eventHandler.feature.EventHandler
@@ -62,7 +62,7 @@ class SimpleAgentMockedTest {
 
     @Test
     fun `simpleSingleRunAgent should not call tools by default`() = runBlocking {
-        val agent = simpleSingleRunAgent(
+        val agent = AIAgent(
             systemPrompt = systemPrompt,
             llmModel = OpenAIModels.Reasoning.GPT4oMini,
             temperature = 1.0,
@@ -88,7 +88,7 @@ class SimpleAgentMockedTest {
             tool(SayToUser)
         }
 
-        val agent = simpleSingleRunAgent(
+        val agent = AIAgent(
             systemPrompt = systemPrompt,
             llmModel = OpenAIModels.Reasoning.GPT4oMini,
             temperature = 1.0,
