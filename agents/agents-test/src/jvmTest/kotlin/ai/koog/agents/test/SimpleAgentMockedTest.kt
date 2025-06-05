@@ -61,7 +61,7 @@ class SimpleAgentMockedTest {
     }
 
     @Test
-    fun `simpleSingleRunAgent should not call tools by default`() = runBlocking {
+    fun `AIAgent should not call tools by default`() = runBlocking {
         val agent = AIAgent(
             systemPrompt = systemPrompt,
             llmModel = OpenAIModels.Reasoning.GPT4oMini,
@@ -73,7 +73,7 @@ class SimpleAgentMockedTest {
 
         agent.run("Repeat after me: Hello, I'm good.")
 
-        // by default, a simpleSingleRunAgent has no tools underneath
+        // by default, a AI Agent has no tools underneath
         assertTrue(actualToolCalls.isEmpty(), "No tools should be called")
         assertTrue(results.isNotEmpty(), "No agent run results were received")
         assertTrue(
@@ -83,7 +83,7 @@ class SimpleAgentMockedTest {
     }
 
     @Test
-    fun `simpleSingleRunAgent should call a custom tool`() = runBlocking {
+    fun `AIAgent should call a custom tool`() = runBlocking {
         val toolRegistry = ToolRegistry {
             tool(SayToUser)
         }
