@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'temurin'  # Popular OpenJDK distribution
+          distribution: 'temurin'  # Popular OpenJDK distribution, change to trigger Qodana
 
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2025.1
